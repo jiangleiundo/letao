@@ -2,7 +2,7 @@ $(function () {
 	getFirstCategory(function (data) {
 		$('.lt-category-nav').find('ul').html(template('firstCategory', data));
 		//默认选择第一个分类
-		getSecondCatgory({id: data.rows[0].id}, function(data){
+		getSecondCategory({id: data.rows[0].id}, function(data){
 			$('.lt-category-con').find('ul').html(template('secondCategory', data));
 		})
 	});
@@ -30,7 +30,7 @@ var getFirstCategory = function (callback) {
 };
 
 //获取二级分类
-var getSecondCatgory = function (params, callback) {
+var getSecondCategory = function (params, callback) {
 	$server.ajax(API_GET_SECOND_CATEGORY, 'get', params, function (data) {
 		callback && callback(data);
 	})

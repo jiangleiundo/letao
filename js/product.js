@@ -5,41 +5,49 @@ $(function () {
 
     //商品ID
     var pId = _utility.getQueryString('id');
-    getProductDetail({id: pId}, function (data) {
-        console.log(data);
-        $('.mui-scroll').html(template('pDetail', data));
-        mui('.mui-slider').slider({
-            interval: 5000
-        });
+    //render data
+    var render = function (){
+        getProductDetail({id: pId}, function (data) {
+            $('.mui-scroll').html(template('pDetail', data));
+            mui('.mui-slider').slider({
+                interval: 5000
+            });
 
-        //选择尺寸
-        $('.lt-product-size').on('tap', 'span', function () {
-            $(this).addClass('active').siblings().removeClass('active');
-        });
+            //选择尺寸
+            $('.lt-product-size').on('tap', 'span', function () {
+                $(this).addClass('active').siblings().removeClass('active');
+            });
 
-        //选择数量
-        var $productNum = $('.lt-product-num');
-        var $maxNum = parseInt($productNum.find('.mui-numbox').attr('data-max'));
-        var $input = $productNum.find('.mui-input-numbox');
+            //选择数量
+            var $productNum = $('.lt-product-num');
+            var $maxNum = parseInt($productNum.find('.mui-numbox').attr('data-max'));
+            var $input = $productNum.find('.mui-input-numbox');
 
-        $productNum.on('tap', '.mui-btn-numbox-minus', function () {
-            var curNum = parseInt($input.val());
-            if (curNum > 1) {
-                $input.val(--curNum);
-            } else {
-                _dialog.toast('至少选择一件');
-            }
+            $productNum.on('tap', '.mui-btn-numbox-minus', function () {
+                var curNum = parseInt($input.val());
+                if (curNum > 1) {
+                    $input.val(--curNum);
+                } else {
+                    _dialog.toast('至少选择一件');
+                }
+            });
+            $productNum.on('tap', '.mui-btn-numbox-plus', function () {
+                var curNum = Number($input.val());
+                if (curNum < $maxNum) {
+                    $input.val(++curNum);
+                } else {
+                    _dialog.toast('提醒卖家补货');
+                }
+            });
         });
-        $productNum.on('tap', '.mui-btn-numbox-plus', function () {
-            var curNum = Number($input.val());
-            if (curNum < $maxNum) {
-                $input.val(++curNum);
-            } else {
-                _dialog.toast('提醒卖家补货');
-            }
-        });
+    };
+    render();
+
+    //reload
+    $('.lt-header').on('tap', '.fa-refresh', function (){
+        $('.mui-scroll').html('<div id="loading"><div class="box">加载中···</div></div>');
+        render();
     });
-
     //add to cart
     $('.lt-trade-nav').on('tap', '.mui-btn-grey', function (){
         if(window.addFlag){ //avoid repeat submit
