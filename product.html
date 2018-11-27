@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0">
+    <!-- ios是否创建快捷启动方式-->
+    <meta content="yes" name="app-mobile-web-app-capable">
+    <!-- iOS顶部通栏样式 black-->
+    <meta name="app-mobile-web-app-status-bar-style" content="black">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="description" content="乐淘是中国最大的正品运动鞋、皮鞋网上专卖。乐淘网经营的品牌包括耐克、阿迪达斯、李宁、匡威等国内外知名品牌的篮球鞋,板鞋,休闲鞋,跑步鞋,帆布...">
+    <meta name="Keywords"
+          content="乐淘 乐淘鞋城 买鞋子 上乐淘 运动鞋 篮球鞋 帆布鞋 跑步鞋 男鞋 女鞋 足球鞋 休闲鞋 凉鞋 户外鞋 布洛克 高跟鞋 单鞋 豆豆鞋 乐福鞋 牛津鞋 凉拖 皮鞋 短靴 长靴 登山鞋 徒步鞋 硫化鞋 训练鞋 溯溪鞋 越野鞋 板鞋 足球鞋 网球鞋 赛车鞋 雪地靴 马丁靴 商务 英伦">
+    <link type="image/x-icon" rel="shortcut icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css"/>
+    <link rel="stylesheet" href="assets/fa/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="css/common.css"/>
+    <link rel="stylesheet" href="css/product.css"/>
+    <title>乐购-商品详情</title>
+</head>
+<body>
+<div class="lt-container">
+    <header class="lt-header">
+        <a href="javascript:history.back();" class="icon-lt"><i class="fa fa-chevron-left"></i></a>
+        <span>商品详情</span>
+        <a href="javascript:" class="icon-rt"><i class="fa fa-refresh"></i></a>
+    </header>
+    <div class="lt-content">
+        <div class="lt-wrapper">
+            <!-- 滑动区域-->
+            <div class="mui-scroll-wrapper">
+                <div class="mui-scroll">
+                    <!-- loading-->
+                    <div id="loading">
+                        <div class="box">加载中···</div>
+                    </div>
+                    <!-- end loading-->
+                </div>
+            </div><!-- end 滑动区块-->
+        </div>
+    </div>
+    <footer class="lt-trade-nav mui-clearfix">
+        <a href="user/cart.html" class="mc-red"><i class="fa fa-shopping-cart"></i></a>
+        <div class="mui-pull-right">
+            <a href="javascript:" class="mui-btn mui-btn-grey">加入购物车</a>
+            <a href="javascript:" class="mui-btn mui-btn-blue">立即购买</a>
+        </div>
+    </footer>
+</div>
+<script type="text/template" id="pDetail">
+    <div class="mui-slider">
+        <div class="mui-slider-group mui-slider-loop">
+            <% if(!pic || pic.length === 0){
+            pic = [{'picAddr': '/app/images/none.png'}];
+            } %>
+            <div class="mui-slider-item mui-slider-item-duplicate"><a href="javascript:void(0)"><img
+                    src="<%= pic[pic.length-1].picAddr %>"/></a></div>
+            <% for(var i=0; i < pic.length; i++){ %>
+            <div class="mui-slider-item"><a href="javascript:void(0)"><img src="<%=pic[i].picAddr%>"/></a></div>
+            <% } %>
+            <div class="mui-slider-item mui-slider-item-duplicate"><a href="javascript:void(0)"><img
+                    src="<%= pic[0].picAddr %>"/></a>
+            </div>
+        </div>
+        <div class="mui-slider-indicator">
+            <% for(var i = 0; i < pic.length; i++){ %>
+            <div class="mui-indicator <%=i==0?'mui-active':''%>"></div>
+            <% } %>
+        </div>
+    </div>
+    <!--名称-->
+    <div class="lt-product-tit mui-ellipsis-2"><%=proName%></div>
+    <!--价格-->
+    <div class="lt-product-price">
+        价格：
+        <span><%=price%></span>
+        <sub><%=oldPrice%></sub>
+    </div>
+    <!--尺码-->
+    <div class="lt-product-size">
+        尺码：
+        <% var arr = size.split('-'); %>
+        <% for(var i = arr[0]; i <= arr[1]; i++){ %>
+            <span><%=i%></span>
+        <% } %>
+    </div>
+    <!--剩余件数-->
+    <div class="lt-product-num">
+        数量：
+        <div class="mui-numbox" data-min="1" data-max="<%=num%>" data-m="3">
+            <button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+            <input class="mui-input-numbox" type="number" value="1">
+            <button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+        </div>
+        <span class="num">剩余数量：<%=num%> 双</span>
+    </div>
+    <!--描述-->
+    <div class="lt-product-desc">
+        <span>详情：<%=proDesc%></span>
+    </div>
+</script>
+<script src="assets/mui/js/mui.min.js"></script>
+<script src="assets/zepto/zepto.min.js"></script>
+<script src="assets/artTemplate/template-native.js"></script>
+<script src="js/config.js"></script>
+<script src="js/ajax.js"></script>
+<script src="js/common.js"></script>
+<script src="js/product.js"></script>
+</body>
+</html>

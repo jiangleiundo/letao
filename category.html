@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0">
+	<!-- ios是否创建快捷启动方式-->
+	<meta content="yes" name="app-mobile-web-app-capable">
+	<!-- iOS顶部通栏样式 black-->
+	<meta name="app-mobile-web-app-status-bar-style" content="black">
+	<meta content="telephone=no" name="format-detection">
+	<meta name="description" content="乐淘是中国最大的正品运动鞋、皮鞋网上专卖。乐淘网经营的品牌包括耐克、阿迪达斯、李宁、匡威等国内外知名品牌的篮球鞋,板鞋,休闲鞋,跑步鞋,帆布...">
+	<meta name="Keywords" content="乐淘 乐淘鞋城 买鞋子 上乐淘 运动鞋 篮球鞋 帆布鞋 跑步鞋 男鞋 女鞋 足球鞋 休闲鞋 凉鞋 户外鞋 布洛克 高跟鞋 单鞋 豆豆鞋 乐福鞋 牛津鞋 凉拖 皮鞋 短靴 长靴 登山鞋 徒步鞋 硫化鞋 训练鞋 溯溪鞋 越野鞋 板鞋 足球鞋 网球鞋 赛车鞋 雪地靴 马丁靴 商务 英伦">
+	<link type="image/x-icon" rel="shortcut icon" href="images/favicon.ico">
+	<link rel="stylesheet" href="assets/mui/css/mui.min.css"/>
+	<link rel="stylesheet" href="assets/fa/css/font-awesome.min.css"/>
+	<link rel="stylesheet" href="css/common.css"/>
+	<link rel="stylesheet" href="css/category.css"/>
+	<title>乐购-产品分类</title>
+</head>
+<body>
+<div class="lt-container">
+	<header class="lt-header">
+		<a href="javascript:history.back();" class="icon-lt"><i class="fa fa-chevron-left"></i></a>
+		<span>产品分类</span>
+		<a href="search.html" class="icon-rt"><i class="fa fa-search"></i></a>
+	</header>
+	<div class="lt-content">
+		<div class="lt-wrapper">
+			<!-- 分类导航-->
+			<div class="lt-category-nav">
+				<ul>
+					<!--<li><a href="javascript:" class="active">运动馆</a></li>-->
+				</ul>
+			</div>
+			<!-- 分类内容-->
+			<div class="lt-category-con">
+				<ul class="mui-clearfix">
+					<!--<li><a href="#"><img src="images/brand1.png" alt=""/><p>耐克</p></a></li>-->
+				</ul>
+			</div>
+		</div>
+	</div>
+	<footer class="lt-footer mui-clearfix">
+		<a href="index.html"><i class="fa fa-home"></i><span>首页</span></a>
+		<a class="active" href="category.html"><i class="fa fa-bars"></i><span>分类</span></a>
+		<a href="user/cart.html"><i class="fa fa-shopping-cart"></i><span>购物车</span></a>
+		<a href="user.html"><i class="fa fa-user"></i><span>个人中心</span></a>
+	</footer>
+</div>
+<script type="text/template" id="firstCategory">
+	<% for(var i=0; i< rows.length; i++){ %>
+		<li><a href="javascript:" class="<%=i==0?'active':''%>" data-id="<%=rows[i].id%>"><%=rows[i].categoryName%></a></li>
+	<% } %>
+</script>
+<script type="text/template" id="secondCategory">
+	<% if(rows.length == 0){%>
+		<p style="padding: 10px">暂无分类数据！</p>
+	<% }else{ %>
+		<% for(var i=0; i< rows.length; i++){ %>
+		<li><a href="#"><img src="<%=rows[i].brandLogo%>" alt=""/><p><%=rows[i].brandName%></p></a></li>
+		<% } %>
+	<% } %>
+</script>
+
+<script src="assets/mui/js/mui.min.js"></script>
+<script src="assets/zepto/zepto.min.js"></script>
+<script src="assets/artTemplate/template-native.js"></script>
+<script src="js/config.js"></script>
+<script src="js/ajax.js"></script>
+<script src="js/category.js"></script>
+</body>
+</html>
