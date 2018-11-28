@@ -32,14 +32,14 @@ var $server = {
 				options.beforeSend && options.beforeSend();
 			},
 			success: function (data){
-			    if(data.error == 400){
+			    if(data.error == 400){ //400是未登录
 			    	location.href =  '/app/user/login.html?returnUrl=' + location.href;
 				}else{
-			    	options.success && options.success(data);
-				}
+                    options.success && options.success(data);
+                }
 			},
-			error: function (){
-			    options.error && options.error();
+			error: function (err){
+			    options.error && options.error(err);
 			}
 		})
 	}

@@ -14,7 +14,7 @@ $(function () {
 		$(this).addClass('active');
 		//根据一级分类id获取二级分类数据
 	  var curCategoryId = $(this).attr('data-id');
-		getSecondCatgory({id: curCategoryId}, function(data){
+		getSecondCategory({id: curCategoryId}, function(data){
 			$('.lt-category-con').find('ul').html(template('secondCategory', data));
 		})
 	})
