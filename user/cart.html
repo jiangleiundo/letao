@@ -30,35 +30,16 @@
 			<div class="mui-scroll-wrapper" id="refreshContainer">
 				<div class="mui-scroll">
 					<ul class="mui-table-view">
-						<li class="mui-table-view-cell mui-media lt-for-sel">
-							<i class="fa fa-circle-thin"></i>
-							<div class="mui-slider-right mui-disabled">
-								<a class="mui-btn mui-btn-blue mui-icon mui-icon-compose"></a>
-								<a class="mui-btn mui-btn-red mui-icon mui-icon-trash"></a>
-							</div>
-							<div class="mui-slider-handle">
-								<a href="javascript:">
-									<img class="mui-media-object mui-pull-left" src="../images/product.jpg">
-									<div class="mui-media-body">
-										<h4 class="mui-ellipsis-2">幸福是能和心爱的人一起睡觉能和心爱的人一起睡觉能和心爱的人一起睡觉什么</h4>
-										<p class="lt-goods-size">鞋码：<span>42</span></p>
-										<div class="lt-goods-price mui-clearfix">
-											<p class="mui-pull-left mc-red">¥<span>169</span></p>
-											<p class="mui-pull-right"><sub>x </sub><span>2</span></p>
-										</div>
-									</div>
-								</a>
-							</div>
-						</li>
-					</ul>
 
+					</ul>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="lt-goods-balance lt-for-sel">
-		<i class="fa fa-check-circle"></i>
-		<p>已选 <span style="font-weight: bold">0</span> 件，合计：<span class="mc-red">¥<span>1324</span></span></p>
+		<input type="checkbox">
+		<i class="fa fa-circle-thin"></i>
+		<p>已选 <span style="font-weight: bold" class="lt-balance-num">0</span> 件，合计：<span class="mc-red">¥<span class="lt-balance-price">1324</span></span></p>
 		<button class="button">现在结算</button>
 	</div>
 	<footer class="lt-footer mui-clearfix">
@@ -69,7 +50,37 @@
 	</footer>
 </div>
 <script type="text/template" id="cartTemplate">
-
+	<% if(data && data.length) %>
+	<% for(var i=0; i< data.length; i++){ %>
+		<li class="mui-table-view-cell mui-media lt-for-sel">
+			<input type="checkbox" data-price="189" data-num="2">
+			<i class="fa fa-circle-thin"></i>
+			<div class="mui-slider-right mui-disabled">
+				<a class="mui-btn mui-btn-blue mui-icon mui-icon-compose"></a>
+				<a class="mui-btn mui-btn-red mui-icon mui-icon-trash"></a>
+			</div>
+			<div class="mui-slider-handle">
+				<a href="javascript:">
+					<img class="mui-media-object mui-pull-left" src="../images/product.jpg">
+					<div class="mui-media-body">
+						<h4 class="mui-ellipsis-2">幸福是能和心爱的人一起睡觉能和心爱的人一起睡觉能和心爱的人一起睡觉什么</h4>
+						<p class="lt-goods-size">鞋码：<span>42</span></p>
+						<div class="lt-goods-price mui-clearfix">
+							<p class="mui-pull-left mc-red">¥<span>169</span></p>
+							<p class="mui-pull-right"><sub>x </sub><span>2</span></p>
+						</div>
+					</div>
+				</a>
+			</div>
+		</li>
+	<% } %>
+	<%}else{%>
+	<li class="mui-table-view-cell">
+		<div class="mui-table-cell">
+			<a class="mui-btn mui-btn-link" href="../search.html">购物车空的去添加</a>
+		</div>
+	</li>
+	<%}%>
 </script>
 <script src="../assets/mui/js/mui.min.js"></script>
 <script src="../assets/zepto/zepto.min.js"></script>

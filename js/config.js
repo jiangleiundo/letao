@@ -15,3 +15,4 @@ var API_ADD_CART = '/cart/addCart'; //添加购物车
 var API_USER_INFO = '/user/queryUserMessage'; //用户信息
 var API_USER_LOGOUT = '/user/logout'; //用户登出
 var API_USER_CART = '/cart/queryCartPaging'; //购物车
+

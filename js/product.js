@@ -82,7 +82,7 @@ $(function () {
                         location.href = URL_USER_CART
                     })
                 }else{
-                    _dialog.toast('添加失败，请重试')
+                    _dialog.toast('添加失败')
                 }
                 window.addFlag = false;
             },

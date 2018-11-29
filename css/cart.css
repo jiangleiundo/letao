@@ -26,6 +26,16 @@
 .lt-for-sel .fa-check-circle {
     color: #0064B2;
 }
+.lt-for-sel > input {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    z-index: 999;
+    opacity: 0;
+}
 .mui-media-body h4 {
     font-size: 13px;
     line-height: 1.4;
