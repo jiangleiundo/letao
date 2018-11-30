@@ -35,6 +35,10 @@ var _utility = {
         }
         return res;
     },
+    /**
+     * 将序列化字符转化为对象
+     * @param serializeStr
+     */
     serialize2Obj: function (serializeStr) {
         var obj = {};
         if (!_utility.isEmpty(serializeStr)) {
@@ -45,6 +49,21 @@ var _utility = {
             })
         }
         return obj;
+    },
+    /**
+     * 通过ID获取对应item
+     * @param arr []
+     * @param id [对应ID]
+     * @returns {*}
+     */
+    getItemById: function (arr, id){
+        var obj = null;
+        arr && arr.forEach(function (item, i){
+            if(item.id === id){
+                obj = item
+            }
+        });
+        return obj;
     }
 };
 
@@ -53,14 +72,22 @@ var _dialog = {
      * 弹框确认
      * @param msg [string]
      * @param btn [array]
+     * @param title [string]
      * @param callback [fn]
      */
-    confirm: function (msg, btn, callback) {
-        mui.confirm(msg, '', btn, function (e) {
-            if (e.index === 1) {//e.index值从左到右0,1..对应btn['btn1','btn2']
+    confirm: function (msg, btn, callback, title) {
+        mui.confirm(msg, title, btn, function (e) {
+            if (e.index === 0) {//e.index值从左到右0,1..对应btn['btn1','btn2']
                 callback && callback();
+                return false; //默认点btn1不会自动关闭需调close()方法关闭
             }
         })
+    },
+    /**
+     * 关闭confirm弹窗
+     */
+    close: function () {
+        mui.trigger(document.querySelector('.mui-popup-button-bold'), 'tap');
     },
     /**
      * 消息提示框

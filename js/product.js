@@ -78,7 +78,7 @@ $(function () {
             },
             success: function (data){
                 if(data.success){
-                    _dialog.confirm('加入购物车成功,去购物车看看？', ['继续浏览', '去看看'], function (){
+                    _dialog.confirm('加入购物车成功,去购物车看看？', ['去看看', '继续浏览'], function (){
                         location.href = URL_USER_CART
                     })
                 }else{

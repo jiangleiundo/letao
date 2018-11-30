@@ -49,7 +49,7 @@ $(function () {
 
 	//删除所有记录
 	$history.on('tap', '.fa-trash-o', function(){
-		_dialog.confirm('确认删除历史记录？', ['取消','确认'], function(){
+		_dialog.confirm('确认删除历史记录？', ['确认','取消'], function(){
 			localStorage.setItem('searchHistory', '');
 			//重新渲染数据
 			$history.html(template('historyTpl', {list: []}))
@@ -60,12 +60,13 @@ $(function () {
 	$history.on('longtap', 'a', function(){
 		var index = $(this).attr('data-index');
 		var arr = getLocalSearchData();
-		_dialog.confirm('确认删除该历史记录？',['取消','确认'], function(){
+		_dialog.confirm('确认删除该历史记录？',['确认','取消'], function(){
 			arr.splice(index, 1); //确认删除
 			//重新存储数据
 			localStorage.setItem('searchHistory', JSON.stringify(arr));
 			//重新渲染数据
 			$history.html(template('historyTpl', {list: arr}));
+			_dialog.close();
 		})
 	});
 

@@ -30,7 +30,27 @@
 			<div class="mui-scroll-wrapper" id="refreshContainer">
 				<div class="mui-scroll">
 					<ul class="mui-table-view">
-
+						<li class="mui-table-view-cell mui-media lt-for-sel">
+							<input type="checkbox" data-price="189" data-num="2">
+							<i class="fa fa-circle-thin"></i>
+							<div class="mui-slider-right mui-disabled" data-id="1">
+								<a class="mui-btn mui-btn-blue mui-icon mui-icon-compose"></a>
+								<a class="mui-btn mui-btn-red mui-icon mui-icon-trash"></a>
+							</div>
+							<div class="mui-slider-handle">
+								<a href="javascript:">
+									<img class="mui-media-object mui-pull-left" src="../images/product.jpg">
+									<div class="mui-media-body">
+										<h4 class="mui-ellipsis-2">adidas阿迪达斯 男式 场下休闲篮球鞋S83700 </h4>
+										<p class="lt-goods-size">鞋码：<span>42</span></p>
+										<div class="lt-goods-price mui-clearfix">
+											<p class="mui-pull-left mc-red">¥<span>169</span></p>
+											<p class="mui-pull-right"><sub>x </sub><span>2</span></p>
+										</div>
+									</div>
+								</a>
+							</div>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -50,24 +70,30 @@
 	</footer>
 </div>
 <script type="text/template" id="cartTemplate">
-	<% if(data && data.length) %>
+	<% if(data && data.length > 0) %>
 	<% for(var i=0; i< data.length; i++){ %>
+	<% var item = data[i] %>
 		<li class="mui-table-view-cell mui-media lt-for-sel">
-			<input type="checkbox" data-price="189" data-num="2">
+			<input type="checkbox" data-price="<%=item.price%>" data-num="<%=item.num%>">
 			<i class="fa fa-circle-thin"></i>
-			<div class="mui-slider-right mui-disabled">
+			<div class="mui-slider-right mui-disabled" data-id="<%=item.id%>">
 				<a class="mui-btn mui-btn-blue mui-icon mui-icon-compose"></a>
 				<a class="mui-btn mui-btn-red mui-icon mui-icon-trash"></a>
 			</div>
 			<div class="mui-slider-handle">
 				<a href="javascript:">
-					<img class="mui-media-object mui-pull-left" src="../images/product.jpg">
+					<% var src = "../images/none.png";
+						if(item.pic && item.pic.length){
+							src = item.pic[0].picAddr;
+						}
+					%>
+					<img class="mui-media-object mui-pull-left" src="<%=src%>">
 					<div class="mui-media-body">
-						<h4 class="mui-ellipsis-2">幸福是能和心爱的人一起睡觉能和心爱的人一起睡觉能和心爱的人一起睡觉什么</h4>
-						<p class="lt-goods-size">鞋码：<span>42</span></p>
+						<h4 class="mui-ellipsis-2"><%=item.proName%></h4>
+						<p class="lt-goods-size">鞋码：<span><%=item.size%></span></p>
 						<div class="lt-goods-price mui-clearfix">
-							<p class="mui-pull-left mc-red">¥<span>169</span></p>
-							<p class="mui-pull-right"><sub>x </sub><span>2</span></p>
+							<p class="mui-pull-left mc-red">¥<span><%=item.price%></span></p>
+							<p class="mui-pull-right"><sub>x </sub><span><%=item.num%></span></p>
 						</div>
 					</div>
 				</a>
@@ -82,7 +108,27 @@
 	</li>
 	<%}%>
 </script>
-<script src="../assets/mui/js/mui.min.js"></script>
+<script type="text/template" id="cartEdit">
+	<div class="lt-modal">
+		<div class="lt-product-size">
+			尺码：
+			<% var sizeArr = productSize.split('-');
+			for(var i = sizeArr[0]; i <= sizeArr[1]; i++){
+			%>
+			<span class="<%=i==size?'active':''%>"><%=i%></span>
+			<% } %>
+		</div>
+		<div class="lt-product-num">
+			数量：
+			<div class="mui-numbox" data-min="1" data-max="<%=productNum%>">
+				<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+				<input class="mui-input-numbox" type="number" value="<%=num%>">
+				<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+			</div>
+		</div>
+	</div>
+</script>
+<script src="../assets/mui/js/mui.js"></script>
 <script src="../assets/zepto/zepto.min.js"></script>
 <script src="../assets/artTemplate/template-native.js"></script>
 <script src="../js/config.js"></script>
