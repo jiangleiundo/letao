@@ -17,7 +17,7 @@ $('.menu [data-sec]').on('click', function (){
 
 $('[data-logout]').on('click', function (){
     modal.create();
-    $('.modal').off('click', '.btn-primary').on('click', '.btn-primary', function (){
+    $('.modal-logout').off('click', '.btn-primary').on('click', '.btn-primary', function (){
         $http.ajax({
             url: API_LOGOUT_EMPLOYEE,
             success: function (data){
@@ -32,7 +32,7 @@ $('[data-logout]').on('click', function (){
 var modal = {
     create: function (){
         var html =
-            '<div class="modal fade">'+
+            '<div class="modal fade modal-logout">'+
             '    <div class="modal-dialog modal-sm">'+
             '        <div class="modal-content">'+
             '            <div class="modal-header">'+
@@ -49,13 +49,13 @@ var modal = {
             '        </div>'+
             '    </div>'+
             '</div>';
-        var isHas = $('body').find('.modal').length;
+        var isHas = $('body').find('.modal-logout').length;
         if(!isHas){//如果页面已经有modal就不在添加
             $('body').append(html);
         }
-        $('.modal').modal('show');
+        $('.modal-logout').modal('show');
     },
     close: function (){
-        $('.modal').modal('hide');
+        $('.modal-logout').modal('hide');
     }
 };

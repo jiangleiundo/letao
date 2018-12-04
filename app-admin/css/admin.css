@@ -2,6 +2,16 @@
     background: #1e282c;
 }
 
+.cf:before,
+.cf:after {
+    content: ' ';
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
 .mt-150 {
     margin-top: 150px;
 }
@@ -122,6 +132,7 @@
     float: left;
     width: 45%;
     height: 400px;
+    margin-top: 40px;
 }
 
 .ad-content .picTable:first-child {
@@ -132,10 +143,17 @@
     text-align: center;
 }
 
-.page {
-    text-align: right;
+.table>tbody>tr>td {
+    vertical-align: middle;
 }
 
-.page .pagination {
+.pagination {
     margin-top: 0;
+    user-select: none;
+    -webkit-user-select: none;
 }
+.pagination a:hover {
+    cursor: pointer;
+}
+
+

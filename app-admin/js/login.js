@@ -59,27 +59,7 @@ $(function () {
                     }
                 }
             }
-        });
-
-        // $.ajax({
-        //     url: '/employee/employeeLogin',
-        //     type: 'post',
-        //     data: $form.serialize(),
-        //     dataType: 'json',
-        //     success: function (data) {
-        //         if (data.success) {
-        //             location.href = '/app-admin/index.html'
-        //         } else {
-        //             //bv.disableSubmitButtons(false); //登录失败回复可提交的按钮
-        //             /* 指定某一个表单元素的错误提示  NOT_VALIDATED, VALIDATING, INVALID or VALID */
-        //             if (data.error === 1000) {
-        //                 bv.updateStatus('username', 'INVALID', 'callback');
-        //             } else if (data.error === 1001) {
-        //                 bv.updateStatus('password', 'INVALID', 'callback');
-        //             }
-        //         }
-        //     }
-        // })
+        })
     });
 
     //重置登录数据
