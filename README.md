@@ -1,2 +1,12 @@
-# letao
-b2c-webapp
+# letao--b2c-webapp
+1. artTemplate
+2. font-awesome
+3. mui
+4. zepto
+5. bootstrap
+6. bootstrap-paginator
+7. bootstrap-validator
+8. echarts
+9. jquery
+10. jquery-fileupload
+11. Nprogress
