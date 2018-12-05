@@ -86,8 +86,7 @@ $(function () {
                 }
                 window.addFlag = false;
             },
-            error: function (err){
-                console.log(err);
+            error: function (){
                 _dialog.toast('网络忙...');
                 window.addFlag = false;
             }

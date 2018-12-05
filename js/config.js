@@ -14,7 +14,8 @@ var API_GET_PRODUCT_INFO = '/product/queryProductDetail'; //获取商品详情
 var API_ADD_CART = '/cart/addCart'; //添加购物车
 var API_USER_INFO = '/user/queryUserMessage'; //用户信息
 var API_USER_LOGOUT = '/user/logout'; //用户登出
-var API_USER_CART = '/cart/queryCartPaging'; //购物车
+// var API_USER_CART = '/cart/queryCartPaging'; //购物车-数据库错误403
+var API_USER_CART = ' /cart/queryCart'; //购物车
 var API_UPDATE_CART = '/cart/updateCart'; //编辑商品size和num
 var API_DEL_CART = '/cart/deleteCart'; //删除商品
 

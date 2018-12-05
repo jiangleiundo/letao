@@ -1,7 +1,11 @@
 $(function () {
+    template.helper('getZepto', function (){
+       return Zepto;
+    });
+
     var render = function (that) {
         getCartData(function (data) {
-            $('.mui-table-view').html(template('cartTemplate', data));
+            $('.mui-table-view').html(template('cartTemplate', {data: data}));
             that && that.endPulldownToRefresh(); //关闭下拉涮新
         })
     };
@@ -11,8 +15,8 @@ $(function () {
             down: {
                 auto: true,//可选,默认false.首次加载自动上拉刷新一次
                 callback: function () {
-                    // render(this);
-                    this.endPulldownToRefresh();
+                    render(this);
+                    // this.endPulldownToRefresh();
                 }
             }
         }
@@ -46,8 +50,8 @@ $(function () {
     //编辑商品
     $selBox.on('tap', '.mui-icon-compose', function () {
         var id = $(this).parent().attr('data-id');
-        var item = _utility.getItemById(window.cartData.data, id);
-        var html = template('cartEdit', item).replace(/\n/g, ''); //将获取的HTML字符串换行符替换成空防止自动生成<br>
+        var item = _utility.getItemById(window.cartData, id);
+        var html = template('cartEdit', item).replace(/\n/g, '');//将获取的HTML字符串换行符替换成空防止自动生成<br>
 
         _dialog.confirm(html, ['确定', '取消'], function () {
             modalEvent();
@@ -155,11 +159,8 @@ var setSel = function (self) {
 /*getCartData*/
 var getCartData = function (callback) {
     $server.ajaxFilter({
-        url: API_USER_CART, //api - bug数据库异常
-        data: {
-            page: 0,
-            pageSize: 100
-        },
+        url: API_USER_CART,
+        data: {},
         success: function (data) {
             window.cartData = data; //存全局变量方便编辑时使用数据
             callback && callback(data);

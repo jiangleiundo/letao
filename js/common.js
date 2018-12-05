@@ -5,7 +5,7 @@ var _utility = {
      */
     getQueryString: function (name) {
         var after = window.location.search;
-        if (after.indexOf('?') === -1) return null; //如果url中没有传参直接返回空
+        if (after.indexOf('?') == -1) return null; //如果url中没有传参直接返回空
 
         //先通过search取值如果取不到就通过hash来取
         after = after.substr(1) || window.location.hash.split("?")[1];
@@ -29,7 +29,7 @@ var _utility = {
     isEmpty: function (str) {
         var res = false;
         try {
-            res = !str || str === "''" || str === "" || str == null || str === '{}' || str === '[]' || str === '0';
+            res = !str || str == "''" || str == "" || str == null || str == '{}' || str == '[]' || str == '0';
         } catch (e) {
             res = false;
         }
@@ -56,13 +56,16 @@ var _utility = {
      * @param id [对应ID]
      * @returns {*}
      */
-    getItemById: function (arr, id){
+    getItemById: function (arr, id) {
         var obj = null;
-        arr && arr.forEach(function (item, i){
-            if(item.id === id){
-                obj = item
-            }
-        });
+        try {
+            arr.forEach(function (item, i){
+                if(item.id == id){
+                    obj = item;
+                    throw Error();
+                }
+            })
+        }catch (e) {}
         return obj;
     }
 };
