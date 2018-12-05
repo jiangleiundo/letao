@@ -15,7 +15,7 @@ $(function () {
     };
     render();
 
-    //分页
+    //分页功能
     var setPaginator = function (data) {
         $('.pagination').bootstrapPaginator({
             bootstrapMajorVersion: 3, //对应bootstrap版本
@@ -31,16 +31,20 @@ $(function () {
              * @param page [点击按钮对应的页码]
              */
             onPageClicked: function (event, originalEvent, type, page) {
-                render(page);
+                render(page);//根据点击页数渲染页面
             }
         })
     };
 
     //点击提交添加二级分类
-    // $('#modal_add_category2').on('click', '.btn-primary', function (e){
-    //     e.preventDefault();
-    //     $('#modal_add_category2').modal('hide');
-    // });
+    $('#add_category').on('click', function (){
+        var $form = $('#form_category2');
+        $form.data("bootstrapValidator").resetForm();
+        $form.find('input').val('');
+        $form.find('.category-sel').html('请选择一级分类');
+        $form.find('img').attr('src','/app-admin/images/none.png');
+        $('#modal_add_category2').modal('show');
+    });
 
     //校验添加二级分类表单
     var $form_category2 = $('#form_category2');
